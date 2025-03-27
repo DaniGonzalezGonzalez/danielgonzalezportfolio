@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getDocuments } from "../helpers/firebase/cloud-firestore"
 
 export function useHomepage() {
+  const [sobreMi, setSobreMi] = useState([])
   const [proyectosWeb, setProyectosWeb] = useState([])
   const [experiences, setExperiences] = useState([])
   const [formacion, setFormacion] = useState([])
@@ -9,6 +10,16 @@ export function useHomepage() {
   const [publicaciones, setPublicaciones] = useState([])
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    getDocuments('SobreMi')
+    .then((datosSobreMi) => {
+      if(!datosSobreMi.length) throw new Error('No hay datos den el apartado Sobre Mí')
+      setSobreMi(datosSobreMi)
+    })
+    .catch(setError)
+    .finally(()=> setIsLoading(false))
+  }, [])
 
   useEffect(() => {
     getDocuments('ProyectosWeb')
@@ -61,6 +72,7 @@ export function useHomepage() {
   }, [])
 
   return {
+    sobreMi,
     proyectosWeb,
     experiences,
     formacion,

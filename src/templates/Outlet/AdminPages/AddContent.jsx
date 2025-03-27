@@ -32,12 +32,13 @@ export function AddContent() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-8 bg-gray-800">
+    <div className="flex items-center justify-center min-h-screen p-8 bg-slate-900">
       <div className="p-6 mx-8 my-8 bg-gray-600 rounded shadow-lg sm:mx-2">
         <form className='flex flex-col gap-3 space-y-4' onSubmit={handleSubmit}>
           <div className='flex flex-col gap-2'>
             <label htmlFor="tipo-contenido" className="block font-medium text-white font-montserrat">Tipo de contenido</label>
             <select ref={tipoContenidoRef} name="tipoContenido" id="tipo-contenido" className="p-2 border rounded">
+              <option value="SobreMi">Sobre Mí</option>
               <option value="ProyectosWeb">Proyectos Web</option>
               <option value="Experiencia">Experiencia</option>
               <option value="Formacion">Formación</option>

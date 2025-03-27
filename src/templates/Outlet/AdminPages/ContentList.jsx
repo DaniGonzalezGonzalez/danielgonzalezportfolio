@@ -76,9 +76,10 @@ export function ContentList() {
   return (
     <div>    
       {error && (<div className="items-center justify-center h-screen"><span className="text-xl text-gray-900 font-montserrat">{error.message}</span></div>)}
-      <div className="min-h-screen p-4 pb-10 bg-gray-800">
+      <div className="min-h-screen p-4 pb-10 bg-slate-900 sm:pt-20">
         <div className="container p-4 mx-auto">
           <select name="tipoContenido" id="tipo-contenido"  className="p-2 border rounded" onChange={handleOption}>
+            <option value="SobreMi">Sobre Mí</option>
             <option value="ProyectosWeb">Proyectos Web</option>
             <option value="Experiencia">Experiencia</option>
             <option value="Formacion">Formación</option>

@@ -1,11 +1,23 @@
-export function HeadHomePage() {
+export function HeadHomePage({ sortedData }) {
+  const backgroundImageUrl = sortedData[1]?.url;
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen p-4 bg-gray-950 shadow-md sm:flex-row sm:items-center">
-      <div className="flex flex-col items-center justify-center mb-4 sm:mb-0 sm:w-1/2 sm:pr-8">
-        <h1 className="font-bold text-white text-7xl sm:text-8xl md:text-9xl" style={{ fontSize: "clamp(3rem, 11vw, 11rem)" }}>
+    <div className="fixed top-0 left-0 w-full h-screen">
+      {/* Imagen de fondo */}
+      <div
+        className="absolute inset-0 bg-center bg-cover"
+        style={{ backgroundImage: `url(${backgroundImageUrl})` }}
+      />
+
+      {/* Filtro de oscuridad */}
+      <div className="absolute inset-0 bg-slate-950 opacity-80" />
+
+      {/* Contenido principal */}
+      <div className="relative flex flex-col items-center justify-center h-full">
+        <h1 className="font-bold text-white text-7xl sm:text-8xl md:text-9xl drop-shadow-lg" style={{ fontSize: "clamp(3rem, 11vw, 11rem)" }}>
           PORTFOLIO
         </h1>
-        <h2 className="mt-8 text-3xl font-medium text-white sm:text-4xl md:text-5xl" style={{ fontSize: "clamp(1.5rem, 4vw, 4rem)" }}>
+        <h2 className="mt-8 text-3xl font-medium text-white sm:text-4xl md:text-5xl drop-shadow-lg" style={{ fontSize: "clamp(1.5rem, 4vw, 4rem)" }}>
           DANIEL GONZÁLEZ
         </h2>
       </div>

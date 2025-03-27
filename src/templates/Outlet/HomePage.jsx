@@ -11,7 +11,7 @@ import { MapProyectosWeb } from "../../components/MapHomePage/MapsPersonalizados
 import { ScrollToTopButton } from "../../components/ScrollToTopButton"
 
 export function HomePage() {
-  const { proyectosWeb, experiences, formacion, premios, publicaciones, isLoading, error } = useHomepage()
+  const { sobreMi, proyectosWeb, experiences, formacion, premios, publicaciones, isLoading, error } = useHomepage()
  
   // Ordenar los elementos por el campo 'titulo' de forma ascendente
   const sortedDataProyectosWeb = proyectosWeb.sort((a, b) => b.yearEnd.localeCompare(a.yearEnd))
@@ -22,11 +22,11 @@ export function HomePage() {
 
   return (
     <div>
-      <HeadHomePage/>
+      <div className="min-h-screen"><HeadHomePage sortedData={sobreMi}/></div>
       <div className="flex justify-center">{isLoading && <HomePageSkeleton />}</div>
-      <IndicePortfolio/>
+      <IndicePortfolio sortedData={sobreMi}/>
       {/* Mapeo de cada contenido añadido (vienen de components/MapHomePage/MapsPersonalizados) */}
-      <div><SobreMi/></div>
+      <div><SobreMi tipoContenido={'Sobre Mí'} sortedData={sobreMi}/></div>
       <div>
           <MapProyectosWeb tipoContenido={'Proyectos Web'} sortedData={sortedDataProyectosWeb}/>
       </div>
@@ -50,7 +50,7 @@ export function HomePage() {
         <MapPublicaciones tipoContenido={'Publicaciones'} sortedData={sortedDataPublicaciones} />
       </div>
       {error && error.message}
-      <div className="relative z-100"><ScrollToTopButton/></div>
+      <div className="relative z-50"><ScrollToTopButton/></div>
     </div>
   )
 }
